@@ -2,69 +2,74 @@ import pandas as pd
 import numpy as np
 from sklearn.impute import KNNImputer
 
-class Cleaning_nulls:
+
+
+class Nulls_cleaner:
 
     def __init__(self, dataframe):
 
         self.dataframe = dataframe
 
 
-    def _find_columns_with_nulls(self):
-    
-        """Identify the columns in the dataset that contain missing values and make a list of these columns.
-        Args:
-            dataframe: dataframe where we want to find missing values.
-        Returns:
-            list: list of columns with missing values.
-        """
-            
-        null_cols = []    
+    def _clean_num_null_values_with_knn(self):
 
-        null_df = self.dataframe.stb.missing()
-        null_df = null_df[null_df['percent'] > 0].reset_index()
-
-        for nombre_col in null_df['index']:
-            null_cols.append(nombre_col)
-
-        return null_cols
-
-
-    def _knn_imputer(self):
-    
-        """Apply the KNN IMPUTER method.
+        """Apply the KNN imputation method to numeric columns in the dataframe.
         Args:
             dataframe: dataframe where we want to apply the method.
         Returns:
-            dataframe: dataframe whitout missing values.
+            dataframe: dataframe whitout numeric missing values.
         """
 
-        imputerKNN = KNNImputer(n_neighbors=5)
-        imputerKNN.fit(self.dataframe)
-        dataframe_knn= imputerKNN.transform(self.dataframe)
+        numerical_dataframe = self.dataframe.select_dtypes(include = np.number)
 
-        df_knn_imputer = pd.DataFrame(dataframe_knn, columns = self.dataframe.columns)
-        columnas_knn = df_knn_imputer.columns
-        self.dataframe.drop(columnas_knn, axis = 1, inplace = True)
-        self.dataframe[columnas_knn] = dataframe_knn
-        
+        imputerKNN = KNNImputer(n_neighbors=5)
+        imputerKNN.fit(numerical_dataframe)
+        numerical_knn = imputerKNN.transform(numerical_dataframe)
+        knn_imputer_dataframe = pd.DataFrame(numerical_knn, columns = numerical_dataframe.columns)
+
+        knn_columns = knn_imputer_dataframe.columns
+        self.dataframe.drop(knn_columns, axis = 1, inplace = True)
+        self.dataframe[knn_columns] = numerical_knn
+
         return self.dataframe
 
 
-    def find_and_clean_null_values(self):
+    def _clean_cat_null_values_with_mode(self):
+        
+        """For categorical columns in the dataframe, if the percentage of null values is more than 10%,
+        replace them with a new category called 'Unknown'. Otherwise, replace them with the mode.
+        Args:
+            dataframe: dataframe where we want to apply the method.
+        Returns:
+            dataframe: dataframe whitout categorical missing values.
+        """
+                
+        categorical_dataframe = self.dataframe.select_dtypes(include = ['O', 'category'])
 
-        """Apply the KNN IMPUTER method and round the result for non-decimal values.
+        cat_cols_with_nulls = categorical_dataframe.columns[categorical_dataframe.isnull().any()].tolist()
+
+        for col in cat_cols_with_nulls:
+            
+            null_percentage = self.dataframe[col].isna().mean() * 100 
+
+            if null_percentage  >= 10:
+                self.dataframe[col].fillna('Unknown', inplace = True)
+            else:
+                self.dataframe[col].fillna(self.dataframe[col].mode()[0], inplace = True)
+
+        return self.dataframe
+
+
+    def find_and_clean_all_null_values(self):
+
+        """Use the previous functions to fill any null values in the dataframe with a single call.
         Args:
             dataframe: dataframe for null value imputation.
         Returns:
             dataframe: dataframe whitout missing values.
         """
         
-        columns_with_nulls = self.find_columns_with_nulls(self.dataframe)
-        dataframe_result = self.knn_imputer(self.dataframe)
-        dataframe_result[columns_with_nulls] = self.dataframe[columns_with_nulls].round()
+        dataframe_result = self._clean_num_null_values_with_knn()
+        dataframe_result = self._clean_cat_null_values_with_mode()
 
         return dataframe_result
-
-
-
-
