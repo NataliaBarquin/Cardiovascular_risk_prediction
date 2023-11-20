@@ -11,7 +11,7 @@
 
 This project aims to predict, using machine learning algorithms, the likelihood of a patient having coronary heart disease.
 
-## DESCRIPCIÓN
+## DESCRIPTION
 
 The chosen dataset for this project is the Cardiovascular_risk_data from Kaggle, available [here](https://www.kaggle.com/datasets/mamta1999/cardiovascular-risk-data).
 
@@ -20,8 +20,8 @@ This dataset includes medical and socio-demographic information such as blood pr
 A comprehensive analysis of the dataset was carried out, together with data cleaning. Presented below are some visualizations generated during the data analysis process.
 
 <div style="display: flex;">
-    <img src="images/analysis_and_exploration/categorical_counplot.png" alt="Counplot" style="height: 400px; margin-right: 100px;">
-    <img src="images/analysis_and_exploration/numerical_histplot.png" alt="Histplot" style="height: 400px;">
+    <img src="images/analysis_and_exploration/categorical_counplot.png" alt="Counplot" style="height: 300px; margin-right: 100px;">
+    <img src="images/analysis_and_exploration/numerical_histplot.png" alt="Histplot" style="height: 300px;">
 </div>
 <br>
 
