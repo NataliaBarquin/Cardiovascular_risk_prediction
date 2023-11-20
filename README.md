@@ -43,8 +43,8 @@ To generate the predictions, we utilised various machine learning algorithms suc
 Ultimately, the Random Forest and XGBoost algorithms produced the most accurate and optimal results. An example of the risk prediction outcomes for ten upcoming patients using two algorithms is presented. The results obtained from both methodologies are identical in nine out of ten cases.
 
 <div style="display: flex;">
-    <img src="images/predictions/xgboost_prediction.png" alt="xgboost" style="height: 250px; margin-right: 50px;">
-    <img src="images/predictions/random_forest_prediction.png" alt="randomforest" style="height: 250px;">
+    <img src="images/predictions/xgboost_prediction.png" alt="xgboost" style="height: 200px; margin-right: 50px;">
+    <img src="images/predictions/random_forest_prediction.png" alt="randomforest" style="height: 200px;">
 </div>
 <br>
 
