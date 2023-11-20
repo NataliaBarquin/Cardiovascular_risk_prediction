@@ -28,7 +28,7 @@ A comprehensive analysis of the dataset was carried out, together with data clea
 The data has been preprocessed to create predictions, using techniques such as scaling, encoding and resampling.
 
 
-To generate the predictions, we utilised various machine learning algorithms such as
+To generate the predictions, we utilised various supervised machine learning algorithms such as: 
 
 
 - Logistic Regression,
