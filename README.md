@@ -20,7 +20,7 @@ This dataset includes medical and socio-demographic information such as blood pr
 A comprehensive analysis of the dataset was carried out, together with data cleaning. Presented below are some visualizations generated during the data analysis process.
 
 <div style="display: flex;">
-    <img src="images/analysis_and_exploration/categorical_counplot.png" alt="Counplot" style="height: 300px; margin-right: 100px;">
+    <img src="images/analysis_and_exploration/categorical_counplot.png" alt="Counplot" style="height: 300px; margin-right: 80px;">
     <img src="images/analysis_and_exploration/numerical_histplot.png" alt="Histplot" style="height: 300px;">
 </div>
 <br>
@@ -43,8 +43,8 @@ To generate the predictions, we utilised various machine learning algorithms suc
 Ultimately, the Random Forest and XGBoost algorithms produced the most accurate and optimal results. An example of the risk prediction outcomes for ten upcoming patients using two algorithms is presented. The results obtained from both methodologies are identical in nine out of ten cases.
 
 <div style="display: flex;">
-    <img src="images/predictions/xgboost_prediction.png" alt="xgboost" style="height: 300px; margin-right: 100px;">
-    <img src="images/predictions/random_forest_prediction.png" alt="randomforest" style="height: 300px;">
+    <img src="images/predictions/xgboost_prediction.png" alt="xgboost" style="height: 200px; margin-right: 50px;">
+    <img src="images/predictions/random_forest_prediction.png" alt="randomforest" style="height: 200px;">
 </div>
 <br>
 
