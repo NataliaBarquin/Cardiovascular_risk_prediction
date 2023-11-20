@@ -45,4 +45,12 @@ The XGBoost model achieved superior metrics on the test set; however, we have be
 ### CONCLUSIONS
 --------------
 
-After comparing the outputs of both models in predicting the risk of developing coronary heart disease in new data, we have consistently obtained similar results in 90% of the cases. Considering that both models have performed well in terms of metrics, we can reasonably conclude that our models correctly forecast the response variable.
+To progress our project, we may consider the following steps:
+
+- Experiment with new encodings for our categorical variables to attempt to achieve better metrics.
+
+- Explore new hyperparameters in the Decision Tree, Random Forest, and XG Boost models.
+
+- Explore new machine learning models.
+
+- While this is a personal project, if collaborating with a medical team that provides input data, we may suggest including new variables to enhance the model. These could comprise of exercise and dietary habits, body fat percentage, waist circumference, and other relevant factors.
