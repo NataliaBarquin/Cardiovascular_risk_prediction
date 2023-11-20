@@ -2,11 +2,8 @@
 
 -----------------------
 
+<img src="images/dashboard/dashboard_cardio.png" alt="dashboard" style="height: 500px;">
 
-<div style="display: flex;">
-    <img src="images/dashboard/principal_dashboard.png" alt="principal" style="height: 300px; margin-right: 100px;">
-    <img src="images/dashboard/age_dashboard.png" alt="age" style="height: 300px;">
-</div>
 <br>
 
 
